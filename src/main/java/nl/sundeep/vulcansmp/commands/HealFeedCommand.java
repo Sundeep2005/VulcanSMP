@@ -26,6 +26,6 @@ public class HealFeedCommand {
         } else { feedPlayer(sender); sender.sendMessage(plugin.getMessagesConfig().prefixed("feed.fed")); }
     }
 
-    private void healPlayer(Player player) { player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()); player.setFireTicks(0); player.getActivePotionEffects().forEach(e -> player.removePotionEffect(e.getType())); }
+    private void healPlayer(Player player) { player.setHealth(player.getAttribute(Attribute.MAX_HEALTH).getValue()); player.setFireTicks(0); player.getActivePotionEffects().forEach(e -> player.removePotionEffect(e.getType())); }
     private void feedPlayer(Player player) { player.setFoodLevel(20); player.setSaturation(20f); player.setExhaustion(0f); }
 }

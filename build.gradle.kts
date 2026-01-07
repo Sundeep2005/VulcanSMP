@@ -1,34 +1,28 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import io.papermc.paperweight.tasks.RemapJar
-import org.gradle.api.file.DuplicatesStrategy
+import net.minecrell.pluginyml.paper.PaperPluginDescription;
 
 plugins {
-    java
-    id("io.papermc.paperweight.userdev") version "1.7.1"
-    id("xyz.jpenilla.run-paper") version "2.3.0"
+    id("java")
+    id("xyz.jpenilla.run-paper") version "2.3.1"
     id("com.gradleup.shadow") version "9.3.1"
+    id("de.eldoria.plugin-yml.paper") version "0.7.1"
 }
 
 group = "nl.sundeep"
 version = "1.0.0"
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-}
-
 repositories {
     mavenCentral()
-    maven { setUrl("https://repo.papermc.io/repository/maven-public/") }
-    maven { setUrl("https://oss.sonatype.org/content/groups/public/") }
-    maven { setUrl("https://repo.extendedclip.com/content/repositories/placeholderapi/") }
-    maven { setUrl("https://jitpack.io") }
-    maven { setUrl("https://repo.codemc.org/repository/maven-public/") }
-    maven { setUrl("https://maven.enginehub.org/repo/") }
-    maven { setUrl("https://repo.aikar.co/content/groups/aikar/") }
+    maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://oss.sonatype.org/content/groups/public/")
+    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
+    maven("https://jitpack.io")
+    maven("https://repo.codemc.org/repository/maven-public/")
+    maven("https://maven.enginehub.org/repo/")
+    maven("https://repo.aikar.co/content/groups/aikar/")
 }
 
 dependencies {
-    paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
 
     implementation("com.github.Revxrsal.Lamp:common:3.2.1")
     implementation("com.github.Revxrsal.Lamp:bukkit:3.2.1")
@@ -47,66 +41,54 @@ dependencies {
     compileOnly("com.arcaniax:HeadDatabase-API:1.3.2")
 }
 
-tasks {
-    // We gebruiken shadow + reobf als eindproduct
-    jar {
-        enabled = false
-    }
+paper {
+    name = "VulcanSMP"
+    version = project.version.toString()
+    apiVersion = "1.21"
+    main = "nl.sundeep.vulcansmp.VulcanSMP"
+    authors = listOf("Sundeep2005", "TheBathDuck")
 
-    assemble {
-        dependsOn("reobfJar")
-    }
-
-    compileJava {
-        options.encoding = Charsets.UTF_8.name()
-        options.release.set(21)
-    }
-
-    compileTestJava {
-        options.encoding = Charsets.UTF_8.name()
-        options.release.set(21)
-    }
-
-    javadoc {
-        options.encoding = Charsets.UTF_8.name()
-    }
-
-    processResources {
-        filteringCharset = Charsets.UTF_8.name()
-        val props = mapOf(
-            "name" to "VulcanSMP",
-            "version" to project.version,
-            "description" to "Een uitgebreide core plugin voor je Minecraft server",
-            "apiVersion" to "1.21"
-        )
-        inputs.properties(props)
-        filesMatching("paper-plugin.yml") {
-            expand(props)
+    serverDependencies {
+        register("Vault") {
+            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
+            required = false
+        }
+        register("PlaceholderAPI") {
+            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
+            required = false
+        }
+        register("LuckPerms") {
+            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
+            required = false
+        }
+        register("WorldGuard") {
+            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
+            required = false
+        }
+        register("HeadDatabase") {
+            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
+            required = false
         }
     }
+}
 
-    named<ShadowJar>("shadowJar") {
-        archiveClassifier.set("") // geen "-all"
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
+tasks {
+    shadowJar {
         relocate("com.zaxxer.hikari", "nl.sundeep.vulcansmp.libs.hikari")
         relocate("revxrsal.commands", "nl.sundeep.vulcansmp.libs.lamp")
         relocate("org.spongepowered.configurate", "nl.sundeep.vulcansmp.libs.configurate")
-
         minimize()
-    }
-
-    named("reobfJar") {
-        dependsOn("shadowJar")
     }
 
     runServer {
         minecraftVersion("1.21.1")
+        jvmArgs("-Dcom.mojang.eula.agree=true", "-Dfile.encoding=UTF-8")
+    }
+
+    compileJava {
+        options.release = 21
+        options.compilerArgs.add("-parameters")
     }
 }
 
-// Laat reobfJar de shadowJar als input gebruiken
-tasks.named<RemapJar>("reobfJar") {
-    val shadow = tasks.named<ShadowJar>("shadowJar")
-    inputJar.set(shadow.flatMap { it.archiveFile })
-}
+
