@@ -1,0 +1,48 @@
+database:
+  type: sqlite
+  host: localhost
+  port: 3306
+  name: vulcansmp
+  username: root
+  password: ""
+  pool-size: 10
+
+teleport:
+  delay: 3
+  cooldown: 5
+  tpa-expire-time: 60
+  cancel-on-move: true
+
+homes:
+  default-limit: 3
+  limits:
+    vip: 5
+    mvp: 10
+    premium: 20
+
+economy:
+  currency-symbol: "€"
+  format: "#.##0,00"
+  starting-balance: 0.0
+
+kits:
+  cooldowns:
+    starter: 3600
+    daily: 86400
+    vip: 43200
+
+links:
+  discord: "https://discord.gg/jouwserver"
+  store: "https://store.jouwserver.nl"
+  vote: "https://vote.jouwserver.nl"
+
+staff:
+  join-message: "<yellow>[Staff] <white>{player} <gray>is online gekomen"
+  leave-message: "<yellow>[Staff] <white>{player} <gray>is offline gegaan"
+  notify-join: true
+  notify-leave: true
+
+vanish:
+  enter-message: "<gray>{player} heeft de server verlaten"
+  leave-message: "<gray>{player} is online gekomen"
+  notify-players: true

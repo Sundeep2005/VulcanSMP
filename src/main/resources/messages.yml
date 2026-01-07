@@ -1,0 +1,170 @@
+prefix: "<gradient:#ff6b00:#ff9500>[Vulcan]</gradient> "
+
+general:
+  no-permission: "<red>Je hebt geen toestemming om dit te doen."
+  player-not-found: "<red>Speler <white>{player}</white> niet gevonden."
+  invalid-number: "<red>Ongeldig nummer opgegeven."
+  console-only: "<red>Dit commando kan alleen vanuit de console worden gebruikt."
+  player-only: "<red>Dit commando kan alleen door spelers worden gebruikt."
+
+gamemode:
+  changed: "<green>Je gamemode is veranderd naar <white>{gamemode}</white>."
+  changed-other: "<green>Gamemode van <white>{player}</white> veranderd naar <white>{gamemode}</white>."
+
+fly:
+  enabled: "<green>Vliegen ingeschakeld."
+  disabled: "<red>Vliegen uitgeschakeld."
+  enabled-other: "<green>Vliegen ingeschakeld voor <white>{player}</white>."
+  disabled-other: "<red>Vliegen uitgeschakeld voor <white>{player}</white>."
+
+teleport:
+  warming-up: "<yellow>Teleporteren over <white>{seconds}</white> seconden... Niet bewegen!"
+  teleported: "<green>Geteleporteerd!"
+  cancelled-moved: "<red>Teleportatie geannuleerd omdat je bewoog."
+  cooldown: "<red>Je moet nog <white>{time}</white> seconden wachten voordat je weer kunt teleporteren."
+  teleported-to: "<green>Geteleporteerd naar <white>{player}</white>."
+  teleported-other: "<green><white>{player}</white> geteleporteerd naar <white>{target}</white>."
+  teleported-by: "<green>Je bent geteleporteerd door <white>{player}</white>."
+  teleported-all: "<green><white>{count}</white> spelers naar jouw locatie geteleporteerd."
+
+tpa:
+  request-sent: "<green>Teleportatie verzoek verzonden naar <white>{player}</white>."
+  request-received: "<yellow>{player}</yellow> <green>wil naar je toe teleporteren. Type <white>/tpaccept</white> of <white>/tpadeny</white>."
+  request-expired: "<red>Je teleportatie verzoek naar <white>{player}</white> is verlopen."
+  accepted: "<green>Je hebt het teleportatie verzoek van <white>{player}</white> geaccepteerd."
+  request-accepted: "<green>{player}</green> heeft je teleportatie verzoek geaccepteerd."
+  denied: "<red>Teleportatie verzoek geweigerd."
+  request-denied: "<red>{player}</red> heeft je teleportatie verzoek geweigerd."
+  no-pending-request: "<red>Je hebt geen openstaande teleportatie verzoeken."
+  requester-offline: "<red>De speler die wilde teleporteren is niet meer online."
+  cannot-self: "<red>Je kunt geen teleportatie verzoek naar jezelf sturen."
+
+back:
+  no-location: "<red>Je hebt geen vorige locatie om naar terug te keren."
+
+home:
+  set: "<green>Home <white>{home}</white> is ingesteld."
+  set-failed: "<red>Kon home niet instellen."
+  deleted: "<green>Home <white>{home}</white> is verwijderd."
+  not-found: "<red>Home <white>{home}</white> niet gevonden."
+  no-homes: "<yellow>Je hebt nog geen homes ingesteld."
+  limit-reached: "<red>Je hebt je home limiet van <white>{limit}</white> bereikt."
+  list-header: "<green>Jouw homes:"
+  list-entry: "  <gray>- <white>{home}</white> <dark_gray>({location})"
+
+economy:
+  no-economy: "<red>Geen economie plugin gevonden."
+  insufficient-funds: "<red>Je hebt niet genoeg geld."
+  invalid-amount: "<red>Ongeldig bedrag."
+  cannot-pay-self: "<red>Je kunt jezelf niet betalen."
+  transaction-failed: "<red>Transactie mislukt."
+  paid: "<green>Je hebt <white>{player}</white> <white>{amount}</white> betaald."
+  received: "<green>Je hebt <white>{amount}</white> ontvangen van <white>{player}</white>."
+  given: "<green>Je hebt <white>{amount}</white> gegeven aan <white>{player}</white>."
+  taken: "<green>Je hebt <white>{amount}</white> afgenomen van <white>{player}</white>."
+  set: "<green>Balans van <white>{player}</white> ingesteld op <white>{amount}</white>."
+  baltop-header: "<green>Top <white>{count}</white> Rijkste Spelers:"
+  baltop-entry: "  <gold>{rank}.</gold> <white>{player}</white> <gray>- <green>{balance}"
+
+warp:
+  teleported: "<green>Geteleporteerd naar warp <white>{warp}</white>."
+  created: "<green>Warp <white>{warp}</white> is aangemaakt."
+  create-failed: "<red>Kon warp niet aanmaken."
+  deleted: "<green>Warp <white>{warp}</white> is verwijderd."
+  delete-failed: "<red>Kon warp niet verwijderen."
+  not-found: "<red>Warp <white>{warp}</white> niet gevonden."
+  already-exists: "<red>Warp <white>{warp}</white> bestaat al."
+  no-warps: "<yellow>Er zijn geen warps beschikbaar."
+  list-header: "<green>Beschikbare warps:"
+  list-entry: "  <gray>- <white>{warp}</white> <dark_gray>({location})"
+
+heal:
+  healed: "<green>Je bent geheeld."
+  healed-other: "<green>Je hebt <white>{player}</white> geheeld."
+feed:
+  fed: "<green>Je honger is gestild."
+  fed-other: "<green>Je hebt <white>{player}</white> gevoed."
+
+weather:
+  set: "<green>Weer ingesteld op <white>{weather}</white>."
+  invalid-type: "<red>Ongeldig weer type. Gebruik: clear, sun, rain, thunder"
+
+spawn:
+  teleporting: "<green>Teleporteren naar spawn..."
+  set: "<green>Spawn locatie <white>{spawn}</white> is ingesteld."
+  set-failed: "<red>Kon spawn locatie niet instellen."
+  removed: "<green>Spawn locatie <white>{spawn}</white> is verwijderd."
+  remove-failed: "<red>Kon spawn locatie niet verwijderen."
+  not-found: "<red>Spawn locatie <white>{spawn}</white> niet gevonden."
+
+broadcast:
+  format: "<dark_gray>[<red>Broadcast</red>]</dark_gray> {message}"
+
+enderchest:
+  opened: "<green>Enderchest geopend."
+  opened-other: "<green>Enderchest van <white>{player}</white> geopend."
+
+invsee:
+  opened: "<green>Inventaris van <white>{player}</white> bekijken."
+  cannot-self: "<red>Je kunt je eigen inventaris niet bekijken met dit commando."
+
+kit:
+  received: "<green>Je hebt kit <white>{kit}</white> ontvangen."
+  created: "<green>Kit <white>{kit}</white> is aangemaakt van je hotbar."
+  create-failed: "<red>Kon kit niet aanmaken."
+  deleted: "<green>Kit <white>{kit}</white> is verwijderd."
+  delete-failed: "<red>Kon kit niet verwijderen."
+  not-found: "<red>Kit <white>{kit}</white> niet gevonden."
+  already-exists: "<red>Kit <white>{kit}</white> bestaat al."
+  no-permission: "<red>Je hebt geen toestemming om kit <white>{kit}</white> te gebruiken."
+  cooldown: "<red>Je moet nog <white>{time}</white> wachten voordat je kit <white>{kit}</white> weer kunt gebruiken."
+  no-kits: "<yellow>Er zijn geen kits beschikbaar."
+  list-header: "<green>Beschikbare kits:"
+  list-entry: "  <gray>- <white>{kit}</white> <dark_gray>(Cooldown: {cooldown})"
+
+message:
+  sent: "<gray>[<white>Jij</white> -> <white>{player}</white>]</gray> {message}"
+  received: "<gray>[<white>{player}</white> -> <white>Jij</white>]</gray> {message}"
+  cannot-self: "<red>Je kunt jezelf geen bericht sturen."
+  no-reply-target: "<red>Je hebt niemand om te beantwoorden."
+  target-offline: "<red>Die speler is niet meer online."
+
+playtime:
+  self: "<green>Jouw speeltijd: <white>{time}</white>"
+  other: "<green>Speeltijd van {player}: <white>{time}</white>"
+
+skull:
+  received: "<green>Je hebt de schedel van <white>{player}</white> ontvangen."
+  received-hdb: "<green>Je hebt een hoofd uit HeadDatabase ontvangen: <white>{id}</white>"
+  dropped: "<yellow>Je inventaris was vol, de schedel is op de grond gedropt."
+
+vanish:
+  enabled: "<green>Je bent nu onzichtbaar."
+  disabled: "<green>Je bent niet meer onzichtbaar."
+  staff-enter: "<yellow>[Staff] <white>{player}</white> <gray>is onzichtbaar geworden."
+  staff-leave: "<yellow>[Staff] <white>{player}</white> <gray>is weer zichtbaar."
+
+links:
+  discord: "<green>Join onze Discord: <click:open_url:'{link}'><white><underlined>{link}</underlined></white></click>"
+  store: "<green>Bezoek onze webshop: <click:open_url:'{link}'><white><underlined>{link}</underlined></white></click>"
+  vote: "<green>Stem op ons: <click:open_url:'{link}'><white><underlined>{link}</underlined></white></click>"
+
+friend:
+  help: |
+    <green>Vrienden Commando's:
+    <gray>- /friend add <speler> - Stuur een vriendschapsverzoek
+    <gray>- /friend remove <speler> - Verwijder een vriend
+    <gray>- /friend list - Bekijk je vriendenlijst
+  request-sent: "<green>Vriendschapsverzoek verzonden naar <white>{player}</white>."
+  request-received: "<yellow>{player}</yellow> <green>heeft je een vriendschapsverzoek gestuurd. Type <white>/friend add {player}</white> om te accepteren."
+  request-pending: "<yellow>Je hebt al een openstaand verzoek naar <white>{player}</white>."
+  accepted: "<green>Je bent nu vrienden met <white>{player}</white>!"
+  request-accepted: "<green>{player}</green> heeft je vriendschapsverzoek geaccepteerd!"
+  removed: "<green>Je bent niet meer vrienden met <white>{player}</white>."
+  removed-by: "<yellow>{player}</yellow> <gray>heeft je uit de vriendenlijst verwijderd."
+  already-friends: "<yellow>Je bent al vrienden met <white>{player}</white>."
+  not-friends: "<red>Je bent geen vrienden met <white>{player}</white>."
+  cannot-self: "<red>Je kunt jezelf niet als vriend toevoegen."
+  no-friends: "<yellow>Je hebt nog geen vrienden."
+  list-header: "<green>Jouw vrienden (<white>{count}</white>):"
+  list-entry: "  <gray>- <white>{player}</white> {status}"
